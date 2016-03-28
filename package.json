@@ -1,0 +1,28 @@
+{
+  "name": "1dv450-client",
+  "version": "0.0.1",
+  "description": "Client application created for the course 1dv450",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ad222kr/1dv450-client.git"
+  },
+  "keywords": [
+    "Beer",
+    "Pup"
+  ],
+  "author": "Alexandre Driaguine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ad222kr/1dv450-client/issues"
+  },
+  "homepage": "https://github.com/ad222kr/1dv450-client#readme",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "ngmap": "^1.17.0"
+  }
+}
