@@ -5,7 +5,8 @@ app.config(function($routeProvider, $locationProvider) {
   };
 
   $routeProvider
-  .when("/", indexRoute);
+  .when("/", indexRoute)
+  .otherwise("/");
 
 
 
