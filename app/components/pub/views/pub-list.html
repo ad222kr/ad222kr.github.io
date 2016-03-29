@@ -1,4 +1,23 @@
 <div class="container">
-   <h1>{{ pubs.pubs }} </h1>
+  <h3>Lists all pubs </h3>
+
+  <div class="row">
+    <div class="col s6">
+      <table class="table">
+      <thead>
+        <tr>
+          <th>Namn</th>
+          <th>Beskrivning</th>
+          <th>Telefonnummer</th>
+        </tr>
+        <tr data-ng-repeat="pub in pubs.pubs">
+          <td>{{ pub.name }}</td>
+          <td>{{ pub.description }}</td>
+          <td>{{ pub.phone_number }}</td>
+        </tr>
+      </thead>
+     </table>
+    </div>
+  </div>
 
 </div>

@@ -6,10 +6,12 @@ ListPubsController.$inject = ["PubService"];
 
 function ListPubsController(PubService) {
   var vm = this;
-  pubs = PubService;
-  console.log(pubs.get());
 
 
-  vm.pubs = "PUBS";
+  PubService
+    .get()
+    .then(function(data) {
+      vm.pubs = data.pubs;
+    });
 
 }
