@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ad222kr/1dv450-client#readme",
   "dependencies": {
     "angular": "^1.5.3",
+    "angular-resource": "^1.5.3",
     "angular-route": "^1.5.3",
     "ngmap": "^1.17.0"
   }
