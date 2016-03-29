@@ -4,10 +4,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
     .state("pubs", {
-      url: "/",
+      url: "/pubs",
       templateUrl: "app/components/pub/views/pub-list.html",
       controller: "ListPubsController",
       controllerAs: "pubs"
+    })
+    .state("pub", {
+      url: "/pubs/:id",
+      templateUrl: "app/components/pub/views/pub-details.html",
+      controller: "DetailsPubController",
+      controllerAs: "pub"
     });
 
 });

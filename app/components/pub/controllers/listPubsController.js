@@ -9,7 +9,7 @@ function ListPubsController(PubService) {
 
 
   PubService
-    .get()
+    .getAll()
     .then(function(data) {
       vm.pubs = data.pubs;
     });
