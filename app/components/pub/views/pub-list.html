@@ -1,16 +1,19 @@
 
 <h3>Lists all pubs </h3>
-<table class="table">
-<thead>
-<tr>
-  <th>Namn</th>
-  <th>Adress</th>
-  <th>Telefonnummer</th>
-</tr>
-<tr data-ng-repeat="pub in pubs.pubs">
-  <td>{{ pub.name }}</td>
-  <td>{{ pub.position.address }}</td>
-  <td>{{ pub.phone_number }}</td>
-</tr>
-</thead>
+<table class="highlight bordererd">
+  <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Adress</th>
+      <th>Telefonnummer</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="pub in pubs.pubs">
+      <td><a ui-sref="pub({ id: pub.id })">{{ pub.name }}</a></td>
+      <td>{{ pub.position.address }}</td>
+      <td>{{ pub.phone_number }}</td>
+    </tr>
+  </tbody>
 </table>
