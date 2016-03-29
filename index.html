@@ -12,26 +12,34 @@
     <base href="/">
   </head>
   <body data-ng-app="pub-map">
-    <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Logga in</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">Logga in</a></li>
-      </ul>
-    </div>
-    </nav>
+
+    <div class="behind-nav"></div>
+
 
   	<div class="container">
-      <div class="row">
-        <div class="col s12 m12 l6">
-          <ui-view></ui-view>
-        </div>
-        <div class="col s12 m12 l6">
-          <bm-map><bm-map>
+      <nav>
+      <div class="nav-wrapper">
+        <ul class="left hide-on-med-and-down">
+          <li><a ui-sref="pubs">Alla pubar</a></li>
+        </ul>
+        <a href="#" class="brand-logo center">PubKartan!</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Logga in</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="#">Logga in</a></li>
+        </ul>
+      </div>
+      </nav>
+      <div class="content">
+        <div class="row">
+          <div class="col s12 m12 l6">
+            <ui-view></ui-view>
+          </div>
+          <div class="col s12 m12 l6">
+            <bm-map><bm-map>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +72,7 @@
 
 
     <!-- services -->
+    <script src="app/services/resourceService.js"></script>
     <script src="app/services/pubService.js"></script>
 
     <!-- components -->

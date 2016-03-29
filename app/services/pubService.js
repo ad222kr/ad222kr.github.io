@@ -2,44 +2,32 @@ angular
   .module("pub-map")
   .factory("PubService", PubService);
 
-PubService.$inject = ["$resource", "API"];
+PubService.$inject = ["API", "ResourceService", "$q"];
 
-
-function PubService($resource, API) {
-  "use strict";
-  var headers = {
-    "Accept" : API.format,
-    "Api-Key": API.key
-  }
+function PubService(API, ResourceService, $q) {
+  var endpoint = "pubs";
   var store = {
+    getPubs: function() {
+      var deferred = $q.defer();
 
-
-    api: $resource(API.url + "pubs/:id", null, {
-      update: {
-        method   : "PUT",
-        headers: headers
-      },
-      query: {
-        method: "GET",
-        headers: headers
-
-      },
-      get: {
-        method: "GET",
-        headers: headers
-      }
-    }),
-
-    getAll: function () {
-      return store.api.query().$promise;
+      ResourceService
+        .getAll("pubs")
+        .then(function(data) {
+          deferred.resolve(data);
+        });
+        return deferred.promise;
     },
-    getSingle: function(pubId) {
-      return store.api.get({id: pubId}).$promise;
+    getPubById: function(id) {
+      var deferred = $q.defer();
+
+      ResourceService
+       .getSingle(endpoint, id)
+       .then(function(data) {
+         deferred.resolve(data);
+       })
+       return deferred.promise;
     }
   };
 
-
   return store;
-
-  //vblablablabla
 }
