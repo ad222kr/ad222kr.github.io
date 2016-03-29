@@ -31,6 +31,7 @@ function PubService($resource, API) {
     }),
 
     getAll: function () {
+
       return store.api.query().$promise;
     },
     getSingle: function(pubId) {

@@ -3,3 +3,8 @@ app.constant("API", {
   "url": "https://registration-1dv450.herokuapp.com/api/",
   "format": "application/json"
 });
+
+app.constant("LS", {
+  "pubs-key": "pubs",
+  "tags-key": "tags"
+});

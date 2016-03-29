@@ -1,4 +1,4 @@
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   "use strict";
   $urlRouterProvider.otherwise('/');
 
@@ -15,5 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "DetailsPubController",
       controllerAs: "pub"
     });
+
+  $locationProvider.html5Mode(true);
 
 });

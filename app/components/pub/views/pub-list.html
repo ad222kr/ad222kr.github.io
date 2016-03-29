@@ -4,12 +4,12 @@
 <thead>
 <tr>
   <th>Namn</th>
-  <th>Beskrivning</th>
+  <th>Adress</th>
   <th>Telefonnummer</th>
 </tr>
 <tr data-ng-repeat="pub in pubs.pubs">
   <td>{{ pub.name }}</td>
-  <td>{{ pub.description }}</td>
+  <td>{{ pub.position.address }}</td>
   <td>{{ pub.phone_number }}</td>
 </tr>
 </thead>

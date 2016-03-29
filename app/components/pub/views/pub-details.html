@@ -1,0 +1,11 @@
+<h3>{{ pub.pub.name }} </h3>
+<div>{{ pub.pub.position.address }} </div>
+<div>{{ pub.pub.phone_number }} </div>
+<div>{{ pub.pub.description }}</div>
+
+<h5>Tags!</h5>
+<ul>
+  <li data-ng-repeat="tag in pub.pub.tags">
+    {{ tag.name }}
+  </li>
+</ul>
