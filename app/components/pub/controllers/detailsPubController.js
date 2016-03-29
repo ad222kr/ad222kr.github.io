@@ -12,7 +12,7 @@ function DetailsPubController(PubService, $stateParams) {
     .getSingle($stateParams.id)
     .then(function(data) {
       vm.pub = data.pub;
-    })
+    });
 
 
 }

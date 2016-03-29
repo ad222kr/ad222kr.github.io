@@ -3,6 +3,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
+    .state("home", {
+      // smth else later
+      url: "/",
+      templateUrl: "app/components/pub/views/pub-list.html",
+      controller: "ListPubsController",
+      controllerAs: "pubs"
+    })
     .state("pubs", {
       url: "/pubs",
       templateUrl: "app/components/pub/views/pub-list.html",
@@ -16,6 +23,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: "pub"
     });
 
-  $locationProvider.html5Mode(true);
+
 
 });
