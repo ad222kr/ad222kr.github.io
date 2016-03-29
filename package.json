@@ -20,10 +20,10 @@
     "url": "https://github.com/ad222kr/1dv450-client/issues"
   },
   "homepage": "https://github.com/ad222kr/1dv450-client#readme",
-  "dependencies": {
+  "devDependencies": {
     "angular": "^1.5.3",
     "angular-resource": "^1.5.3",
-    "angular-route": "^1.5.3",
+    "angular-ui-router": "^1.0.0-alpha.1",
     "ngmap": "^1.17.0"
   }
 }

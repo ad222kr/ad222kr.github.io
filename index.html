@@ -6,13 +6,24 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <style>[ng-cloak] { display: none; } </style>
+    <link rel="stylesheet" href="assets/style.css">
     <base href="/">
   </head>
   <body data-ng-app="pub-map">
 
-
-    <div data-ng-view>Partials get here</div>
-
+  	<div class="container">
+      <div class="row">
+        <!-- nav or smth here -->
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l6">
+          <ui-view></ui-view>
+        </div>
+        <div class="col s12 m12 l6">
+          <bm-map><bm-map>
+        </div>
+      </div>
+    </div>
 
     <!--<ng-map zoom="2" center="[43.6650000, -79.4103000]"></ng-map> -->
 
@@ -24,7 +35,8 @@
 
 
     <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-route/angular-route.js"></script>
+
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/ngmap/build/scripts/ng-map.js"></script>
     <script src="node_modules/angular-resource/angular-resource.js"></script>
 
@@ -38,15 +50,18 @@
     <script src="app/app.constants.js"></script>
     <script src="app/app.routes.js"></script>
 
+
+
     <!-- services -->
     <script src="app/services/pubService.js"></script>
 
     <!-- components -->
     <script src="app/components/pub/controllers/listPubsController.js"></script>
-
+    <script src="app/components/map/controllers/mapController.js"></script>
 
 
     <!-- directives -->
+    <script src="app/components/map/directives/bmMap.js"></script>
   </body>
 
 </html>

@@ -1,16 +1,13 @@
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
   "use strict";
-  var indexRoute = {
-    controller: "ListPubsController",
-    controllerAs: "pubs",
-    templateUrl: "app/components/pub/views/pub-list.html"
-  };
+  $urlRouterProvider.otherwise('/');
 
-  $routeProvider
-  .when("/", indexRoute)
-  .otherwise("/");
+  $stateProvider
+    .state("pubs", {
+      url: "/",
+      templateUrl: "app/components/pub/views/pub-list.html",
+      controller: "ListPubsController",
+      controllerAs: "pubs"
+    });
 
-
-
-  $locationProvider.html5Mode(true);
 });
