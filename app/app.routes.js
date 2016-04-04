@@ -21,6 +21,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "app/components/pub/views/pub-details.html",
       controller: "DetailsPubController",
       controllerAs: "pub"
+    })
+    .state("login", {
+      url: "/login",
+      templateUrl: "app/components/auth/views/login.html",
+      controller: "LoginController",
+      controllerAs: "LoginCtrl"
     });
 
 

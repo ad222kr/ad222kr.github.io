@@ -2,8 +2,8 @@ angular
   .module("pub-map")
   .controller("MapController", MapController);
 
-MapController.$inject = ["NgMap", "PubService", "$scope"]
-function MapController(NgMap, PubService, $scope) {
+MapController.$inject = ["NgMap", "PubService"]
+function MapController(NgMap, PubService) {
   var vm = this;
   var markers = [];
   var infoWindow;
@@ -42,7 +42,6 @@ function MapController(NgMap, PubService, $scope) {
   }
 
   function closeInfoWindow() {
-
     infoWindow.close();
   }
 

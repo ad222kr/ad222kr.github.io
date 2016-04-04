@@ -37,8 +37,8 @@
           <div class="col s12 m12 l6">
             <ui-view></ui-view>
           </div>
-          <div class="col s12 m12 l6">
-            <bm-map><bm-map>
+          <div class="col s12 m12 l6" >
+            <bm-map ng-hide="$state.includes('login')"><bm-map>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
     <script src="app/components/pub/controllers/listPubsController.js"></script>
     <script src="app/components/pub/controllers/detailsPubController.js"></script>
     <script src="app/components/map/controllers/mapController.js"></script>
-
+    <script src="app/components/auth/controllers/loginController.js"></script>
 
     <!-- directives -->
     <script src="app/components/map/directives/bmMap.js"></script>

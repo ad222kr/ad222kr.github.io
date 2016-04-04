@@ -1,0 +1,18 @@
+<div data-ng-controller="LoginController as LoginCtrl">
+
+<h2>Login</h2>
+<form name="login-form" ng-submit="LoginCtrl.login()" role="form">
+  <div ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+    <input type="text" name="username" id="username" ng-model="LoginCtrl.username" placeholder="Användarnamn" required />
+    <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Fyll i användarnamn</span>
+  </div>
+
+  <div class="" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+    <input type="password" name="password" id="password" ng-model="LoginCtrl.password" placeholder="Lösenord" required />
+      <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Fyll i användarnamn</span>
+  </div>
+
+  <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Login</button>
+
+</form>
+</div>
