@@ -1,6 +1,9 @@
-<div data-ng-controller="MapController as map">
+<div data-ng-controller="MapController as mapCtrl">
   <map zoom="4" center="[40.74, -74.18]" class="map">
-     <marker position="[1, 2]"  data-ng-repeat="pub in map.pubs" on-click="showInfo()"></marker>
+
+    <marker position="[40.74, -74.18]" on-click="mapCtrl.showInfo()"></div>
 
   </map>
+
+
 </div>

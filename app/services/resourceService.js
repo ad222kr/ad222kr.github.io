@@ -41,7 +41,7 @@ angular
             headers: headersCopy
           }
         });
-        return.resource.save(resource).$promise;
+        return resource.save(resource).$promise;
       }
     };
 
