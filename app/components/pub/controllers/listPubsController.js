@@ -16,7 +16,5 @@ function ListPubsController(PubService) {
     })
     .catch(function(error) {
       console.log("Error: " + error)
-    })
-
-
+    });
 }
