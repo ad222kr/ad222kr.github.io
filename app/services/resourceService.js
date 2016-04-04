@@ -32,13 +32,13 @@ angular
         });
         return resource.get({id: id}).$promise;
       },
-      insert: function(endpoint, resource, token=null) {
+      post: function(endpoint, resource, token=null) {
         if (token) headers.Authorization = "Bearer " + token;
         console.log(headers);
         var resource = $resource(API.url + endpoint, null, {
           get: {
             method: "POST",
-            headers: headersCopy
+            headers: headers
           }
         });
         return resource.save(resource).$promise;
