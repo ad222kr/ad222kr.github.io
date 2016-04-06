@@ -2,11 +2,18 @@ angular
   .module("pub-map")
   .controller("LoginController", LoginController);
 
-function LoginController() {
+LoginController.$inject = ["AuthService"];
+
+function LoginController(AuthService) {
   vm = this;
   vm.login = function() {
-    console.log("Hey");
-    console.log(vm.username);
-    console.log(vm.password);
+
+    AuthService
+      .authenticateUser(vm.username, vm.password)
+      .then(function(resp) {
+        console.log(resp.data.jwt);
+      }, function(error) {
+        console.log(error);
+      });
   }
 }
