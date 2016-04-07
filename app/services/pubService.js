@@ -13,8 +13,10 @@ function PubService(API, ResourceService, $q) {
       ResourceService
         .getAll("pubs")
         .then(function(data) {
-          deferred.resolve(data);
+          console.log(data);
+          return deferred.resolve(data);
         });
+        console.log(deferred.promise);
         return deferred.promise;
     },
     getPubById: function(id) {
