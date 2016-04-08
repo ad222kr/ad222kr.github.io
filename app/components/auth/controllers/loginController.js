@@ -8,11 +8,21 @@ function LoginController(AuthService) {
   vm = this;
   vm.login = function() {
 
-    AuthService
-      .authenticateUser(vm.username, vm.password)
+    AuthService.authenticateUser(vm.username, vm.password)
       .then(function(resp) {
-        console.log(resp.data.jwt);
-        return resp.data.jwt;
+        var token = resp.jwt;
+        console.log(resp);
+        AuthService.getUserByEmail(vm.username)
+          .then(function(resp) {
+            setCurrentUser({
+              username: vm.username,
+              id: resp.data.id,
+              token: token
+            });
+          }, function(error) {
+            console.log("Error: " + error);
+          })
+
         // LOGIN USAH HERE
       }, function(error) {
         // FLASHSHSHS MESHASHHGE
@@ -21,8 +31,7 @@ function LoginController(AuthService) {
   }
 
   var setCurrentUser = function(user) {
-    
+    console.log(user);
   }
 
-  console.log(vm.login());
 }

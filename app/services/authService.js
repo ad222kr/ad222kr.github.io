@@ -2,9 +2,9 @@ angular
   .module("pub-map")
   .factory("AuthService", AuthService);
 
-  AuthService.$inject = ["$http", "$q", "API"];
+  AuthService.$inject = ["$http", "$q", "API", "ResourceService"];
 
-  function AuthService($http, $q, API) {
+  function AuthService($http, $q, API, ResourceService) {
     var endpoint = "knock/auth_token";
     var store = {
       getUserByEmail: function(email) {
@@ -12,12 +12,13 @@ angular
 
         // TODO: fix api to find a creator by email/username
         ResourceService
-          .getSingle("creators", email)
+          .getSingle("creators", null, { email: email })
           .then(function(data) {
             deferred.resolve(data)
           }, function(error) {
             console.log("Error: ", error);
-          })
+          });
+          return deferred.$promise;
       },
 
       authenticateUser: function(username, password) {

@@ -10,7 +10,6 @@ function DetailsPubController(PubService, $stateParams) {
   PubService.getPubById($stateParams.id)
     .then(function(data) {
       console.log(data);
-      return data.pub;
       vm.pub = data.pub;
     })
     .catch(function(error) {

@@ -23,14 +23,15 @@ angular
         });
         return resource.query().$promise;
       },
-      getSingle: function(endpoint, id) {
-        var resource = $resource(API.url + endpoint + "/:id", null, {
+      getSingle: function(endpoint, id, params) {
+        var resource = $resource(API.url + endpoint + "/:id", params, {
           get: {
             method: "GET",
             headers: headers
           }
         });
-        return resource.get({id: id}).$promise;
+        
+        return resource.get({id: id}, params: params).$promise;
       },
       post: function(endpoint, resource, token=null) {
         if (token) headers.Authorization = "Bearer " + token;
