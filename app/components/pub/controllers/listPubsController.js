@@ -7,9 +7,7 @@ ListPubsController.$inject = ["PubService"];
 function ListPubsController(PubService) {
   var vm = this;
 
-  var pubPromise = PubService.getPubs();
-
-  pubPromise
+  PubService.getPubs()
     .then(function(data) {
       console.log(data);
       vm.pubs = data.pubs;

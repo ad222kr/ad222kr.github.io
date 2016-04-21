@@ -13,8 +13,9 @@ angular
     };
 
     var store = {
-      getAll: function (endpoint) {
-        var resource = $resource(API.URL + endpoint, null, {
+      getAll: function (endpoint, params) {
+        if (typeof params !== "object") params = null;
+        var resource = $resource(API.URL + endpoint, params, {
           query: {
             method: "GET",
             headers: headers

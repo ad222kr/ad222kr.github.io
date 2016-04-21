@@ -14,6 +14,7 @@ function LoginController(AuthService, $location) {
         console.log("Logged in!");
       })
       .catch(function(error) {
+        $location.url("/login");
         console.log(error);
       });
   }

@@ -27,17 +27,18 @@ angular
           }
         };
 
-        return $http(request)
-               .then(function(response) {
-                 console.log("200 user found!");
-                 user = { email: email, token: response.data.jwt };
-                 store.loginUser();
-                 deferred.resolve(user);
-               })
-               .catch(function(error) {
-                 console.error("404 user not found");
-                 deferred.reject(error);
-               });
+        $http(request)
+          .then(function(response) {
+            console.log("200 user found!");
+            user = { email: email, token: response.data.jwt };
+            store.loginUser();
+            deferred.resolve(user);
+          })
+          .catch(function(error) {
+            console.error("404 user not found");
+            deferred.reject(error);
+          });
+         return deferred.promise;
       },
 
       loginUser: function() {
@@ -55,8 +56,12 @@ angular
         return user || JSON.parse(localStorage.getItem(storageKey));
       },
 
+      isAuthenticated: function() {
+        console.log("isAuthenticated() called, returned: " + store.getUser());
+        return store.getUser() !== null;
+      },
+
       init: function() {
-        console.log(store.getUser());
         if (store.getUser()) {
           user = JSON.parse(localStorage.getItem(storageKey));
           $rootScope.loggedIn = true;
