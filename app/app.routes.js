@@ -33,21 +33,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "app/components/pub/views/pub-list.html",
       controller: "MyPubsController",
       controllerAs: "pubs",
-      authenticated: true,
       resolve: {
         auth: function($q, AuthService, $location) {
           var deferred = $q.defer();
           var user = AuthService.getUser();
           console.log(user);
           if (user) {
-            console.log("authenticated");
             return $q.when(user);
           } else {
-            console.log("I am being rejected");
-            //$location.path("/login"); // works here but not in logout?????????
+            $location.path("/login"); // hacky solution cus $stateChangeError event does not seem to fire....
             return $q.reject({ authenticated: false, hehe: function() { console.log("rejected"); } });
           }
-
         }
       }
     })
