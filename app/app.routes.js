@@ -33,7 +33,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       resolve: {
         logout: ["$location", "AuthService", function($location, AuthService) {
           AuthService.logoutUser();
-          $location.url("/login");
+          console.log($location);
+          $location.url("/pubs");
+          console.log("TJENA LOGGA UT");
         }]
       }
     });

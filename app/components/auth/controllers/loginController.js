@@ -17,9 +17,4 @@ function LoginController(AuthService, $location) {
         console.log(error);
       });
   }
-
-  var setCurrentUser = function(user) {
-    console.log(user);
-  }
-
 }
