@@ -1,11 +1,12 @@
 <h3 ng-bind="pub.pub.name"> </h3>
-<div ng-bind="pub.pub.position.address"> </div>
-<div ng-bind="pub.pub.position.phone_number">{{ pub.pub.phone_number }} </div>
-<div ng-bind="pub.pub.position.description">{{ pub.pub.description }}</div>
+<div>{{ pub.pub.address }} </div>
+<div>{{ pub.pub.phone_number }} </div>
+<div>{{ pub.pub.description }}</div>
+<div>{{ pub.pub.creator.email }}</div>
+
 
 <h5>Tags!</h5>
 <ul>
   <li data-ng-repeat="tag in pub.pub.tags" ng-bind="tag.name">
-
   </li>
 </ul>

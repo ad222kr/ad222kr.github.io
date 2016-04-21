@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html data-ng-app="pub-map">
   <head>
     <meta charset="utf-8">
     <title>Pub Map! </title>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <base href="/">
   </head>
-  <body data-ng-app="pub-map">
+  <body ng-controller="MainController">
 
     <div class="behind-nav"></div>
 
@@ -22,17 +22,18 @@
       <div class="nav-wrapper">
         <ul class="left hide-on-med-and-down">
           <li><a ui-sref="pubs">Alla pubar</a></li>
-          <li><a ui-sref="login" ng-hide="loggedIn">Logga in</a></li>
-          <li><a ui-sref="logout" ng-show="loggedIn">Logga ut</a></li>
+          <li><a ui-sref="my-pubs" ng-show="loggedIn">Mina pubar</a></li>
+
         </ul>
         <a href="#" class="brand-logo center">PubKartan!</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-
+          <li><a ui-sref="login" ng-hide="loggedIn">Logga in</a></li>
+          <li><a ui-sref="logout" ng-show="loggedIn">Logga ut</a></li>
 
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><a href="#">Logga in</a></li>
+
 
         </ul>
       </div>
@@ -83,11 +84,13 @@
     <script src="app/services/authService.js" charset="utf-8"></script>
 
     <!-- components -->
+    <script src="app/components/main/controllers/mainController.js"></script>
     <script src="app/components/pub/controllers/listPubsController.js"></script>
     <script src="app/components/pub/controllers/detailsPubController.js"></script>
     <script src="app/components/map/controllers/mapController.js"></script>
     <script src="app/components/auth/controllers/loginController.js"></script>
-
+    <script src="app/components/pub/controllers/myPubsController.js"></script>
+    <script src="app/components/auth/controllers/logoutController.js"></script>
     <!-- directives -->
     <script src="app/components/map/directives/bmMap.js"></script>
   </body>
