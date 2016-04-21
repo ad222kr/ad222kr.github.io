@@ -30,12 +30,11 @@ angular
             headers: headers
           }
         });
-        
-        return resource.get({id: id}, params: params).$promise;
+
+        return resource.get({id: id}).$promise;
       },
       post: function(endpoint, resource, token=null) {
         if (token) headers.Authorization = "Bearer " + token;
-        console.log(headers);
         var resource = $resource(API.url + endpoint, null, {
           get: {
             method: "POST",

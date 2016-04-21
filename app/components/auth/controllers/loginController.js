@@ -9,23 +9,10 @@ function LoginController(AuthService) {
   vm.login = function() {
 
     AuthService.authenticateUser(vm.username, vm.password)
-      .then(function(resp) {
-        var token = resp.jwt;
-        console.log(resp);
-        AuthService.getUserByEmail(vm.username)
-          .then(function(resp) {
-            setCurrentUser({
-              username: vm.username,
-              id: resp.data.id,
-              token: token
-            });
-          }, function(error) {
-            console.log("Error: " + error);
-          })
-
-        // LOGIN USAH HERE
-      }, function(error) {
-        // FLASHSHSHS MESHASHHGE
+      .then(function(res) {
+        console.log("Logged in!");
+      })
+      .catch(function(error) {
         console.log(error);
       });
   }

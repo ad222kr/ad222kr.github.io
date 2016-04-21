@@ -1,7 +1,7 @@
 app.constant("API", {
-  "key": "5153de68ca2f4a6a4c753d69107e879e",
-  "url": "https://registration-1dv450.herokuapp.com/api/",
-  "format": "application/json"
+  "KEY": "52c1aefb58a0afe043f6121e94e2c3cd",
+  "URL": "https://registration-1dv450.herokuapp.com/",
+  "FORMAT": "application/json"
 });
 
 app.constant("LS", {
