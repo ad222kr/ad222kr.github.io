@@ -5,7 +5,7 @@ angular
 PubService.$inject = ["API", "ResourceService", "$q"];
 
 function PubService(API, ResourceService, $q) {
-  var endpoint = "pubs";
+  var url  = API.URL + "api/pubs";
   var store = {
     getPubs: function() {
       var deferred = $q.defer();
