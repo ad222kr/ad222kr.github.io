@@ -4,21 +4,23 @@
   margin-top: 20px;
 }
 
+.container {
+  padding: 0 10px;
+}
+
+.content {
+  padding: 10px;
+}
+
 
 @media (min-width: 700px) {
-  .brand-logo {
-    margin-left: 50px;
-  }
 
-  nav div {
-    margin-right: 50px;
-  }
+
+
 
 }
 
-nav a {
-  margin-left: 10px;
-}
+
 
 @media (max-width: 767px) {
   .map {

@@ -7,12 +7,17 @@ DetailsPubController.$inject = ["PubService", "$stateParams"];
 function DetailsPubController(PubService, $stateParams) {
   var vm = this;
 
-
-  PubService
-    .getSingle($stateParams.id)
+  PubService.getPubById($stateParams.id)
     .then(function(data) {
+      console.log(data);
       vm.pub = data.pub;
+    })
+    .catch(function(error) {
+      console.log("Error: ", error);
     });
+
+
+
 
 
 }

@@ -21,8 +21,35 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "app/components/pub/views/pub-details.html",
       controller: "DetailsPubController",
       controllerAs: "pub"
+    })
+    .state("login", {
+      url: "/login",
+      templateUrl: "app/components/auth/views/login.html",
+      controller: "LoginController",
+      controllerAs: "LoginCtrl"
+    })
+    .state("logout", {
+      url: "/logout",
+      resolve: {
+        logout: ["$location", "AuthService", function($location, AuthService) {
+          AuthService.logoutUser();
+          console.log($location);
+          $location.url("/pubs");
+          console.log("TJENA LOGGA UT");
+        }]
+      }
     });
 
+  app.run(["$rootScope", "$location", function($rootScope, $location) {
+    $rootScope.on("$routeChangeSuccess", function(user) {
+      console.log(user);
+    });
 
+    $rootScope.on("$routeChangeError", function(event, current, previous, eventObj) {
+      if (!eventObj.authenticated) {
+        $location.path("/login");
+      }
+    });
+  }]);
 
 });

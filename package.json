@@ -26,5 +26,8 @@
     "angular-resource": "^1.5.3",
     "angular-ui-router": "^1.0.0-alpha.1",
     "ngmap": "^1.17.0"
+  },
+  "dependencies": {
+    "angular-flash-alert": "^2.2.7"
   }
 }
