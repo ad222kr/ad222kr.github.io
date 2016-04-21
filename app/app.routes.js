@@ -27,8 +27,27 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "app/components/auth/views/login.html",
       controller: "LoginController",
       controllerAs: "LoginCtrl"
+    })
+    .state("logout", {
+      url: "/logout",
+      resolve: {
+        logout: ["$location", "AuthService", function($location, AuthService) {
+          AuthService.logoutUser();
+          $location.url("/login");
+        }]
+      }
     });
 
+  app.run(["$rootScope", "$location", function($rootScope, $location) {
+    $rootScope.on("$routeChangeSuccess", function(user) {
+      console.log(user);
+    });
 
+    $rootScope.on("$routeChangeError", function(event, current, previous, eventObj) {
+      if (!eventObj.authenticated) {
+        $location.path("/login");
+      }
+    });
+  }]);
 
 });

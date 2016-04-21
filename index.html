@@ -6,6 +6,7 @@
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="node_modules/angular-flash-alert/dist/angular-flash.min.css" />
     <style>[ng-cloak] { display: none; } </style>
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -21,14 +22,18 @@
       <div class="nav-wrapper">
         <ul class="left hide-on-med-and-down">
           <li><a ui-sref="pubs">Alla pubar</a></li>
+          <li><a ui-sref="login" ng-hide="loggedIn">Logga in</a></li>
+          <li><a ui-sref="logout" ng-show="loggedIn">Logga ut</a></li>
         </ul>
         <a href="#" class="brand-logo center">PubKartan!</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Logga in</a></li>
+
+
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#">Logga in</a></li>
+
         </ul>
       </div>
       </nav>
@@ -58,6 +63,7 @@
     <script src="app/lib/angular-ui-router.js"></script>
     <script src="app/lib/ng-map.js"></script>
     <script src="app/lib/angular-resource.js"></script>
+    <script src="node_modules/angular-flash-alert/dist/angular-flash.min.js"></script>
 
 
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyCfkMXJZj5n8qBla3zBKsQNVOYX-Q0-r4g"></script>
