@@ -2,8 +2,14 @@ angular
   .module("pub-map")
   .controller("MyPubsController", MyPubsController);
 
-  ListPubsController.$inject = ["PubService", "AuthService"];
+  MyPubsController.$inject = ["PubService", "AuthService"];
 
+  /**
+   * Handles showing the current users pubs (creted by the current user)
+   * 
+   * @param PubService - Pub factory
+   * @param AuthService - Authentication factory
+   */
   function MyPubsController(PubService, AuthService) {
     var vm = this;
     var email = AuthService.getCurrenUser().email;
