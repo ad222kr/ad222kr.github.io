@@ -6,9 +6,10 @@ angular
 
   function MyPubsController(PubService, AuthService) {
     var vm = this;
-    var email = AuthService.getUser().email;
+    var email = AuthService.getCurrenUser().email;
 
-    PubService.getPubsByEmail(email)
+    PubService
+      .getPubsByEmail(email)
       .then(function(res) {
         console.log(res);
         vm.pubs = res.pubs;
