@@ -2,9 +2,9 @@ angular
   .module("pub-map")
   .controller("AddPubController", AddPubController);
 
-AddPubController.$inject = ["PubService", "AuthService", "TagService"];
+AddPubController.$inject = ["PubService", "AuthService", "TagService", "$location"];
 
-function AddPubController(PubService, AuthService, TagService) {
+function AddPubController(PubService, AuthService, TagService, $location) {
   console.log("hehehe add pub");
   var vm = this;
   TagService.getTags()
@@ -37,6 +37,8 @@ function AddPubController(PubService, AuthService, TagService) {
     PubService.addPub(pub)
       .then(function(response) {
         console.log(response);
+        var id = response.data.pub.id;
+        $location.url("/pubs/" + id);
       })
       .catch(function(error) {
         console.log(error);

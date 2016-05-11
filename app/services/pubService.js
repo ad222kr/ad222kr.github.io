@@ -22,7 +22,7 @@ function PubService(API, ResourceService, $q) {
      */
     getPubs: function() {
       console.log("Hey I am Inside you getPubs");
-      return ResourceService.getAll(endpoint);
+      return ResourceService.getAll(endpoint + "?limit=30");
     },
 
     /**
