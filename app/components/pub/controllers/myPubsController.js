@@ -12,7 +12,7 @@ angular
    */
   function MyPubsController(PubService, AuthService) {
     var vm = this;
-    var email = AuthService.getCurrenUser().email;
+    var email = AuthService.getCurrentUser().email;
 
     PubService
       .getPubsByEmail(email)

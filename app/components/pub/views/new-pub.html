@@ -1,0 +1,45 @@
+
+<form name="form" id="new-pub-form" novalidate role="form" ng-submit="pub.create()" >
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && form.name.$invalid]">
+    <label class="control-label" for="name">Name</label>
+
+    <input type="text" name="name" ng-model="pub.name" required />
+    <span class="help-inline" ng-show="submitted && form.name.$error.required">Required</span>
+
+  </div>  
+  
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && touched && form.phone.$invalid]">
+    <label class="control-label" for="phone">Phone number</label>
+
+    <input type="number" name="phone" ng-model="pub.phone" required />
+    <span class="help-inline" ng-show="submitted && touched && form.phone.$error.required">Required</span>
+
+  </div> 
+  
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && form.address.$invalid]">
+    <label class="control-label" for="address">Address</label>
+
+    <input type="text" name="address" ng-model="pub.address" required />
+    <span class="help-inline" ng-show="submitted && form.address.$error.required">Required</span>
+
+  </div>   
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && form.address.$invalid]">
+    <label class="control-label" for="description">Description</label>
+    <textarea name="description" id="description" ng-model="pub.description" required="" class="validate materialize-textarea"></textarea>
+    <span class="help-inline" ng-show="submitted && form.address.$error.required">Required</span>
+
+  </div>   
+  <button ng-click="submitted=true" ng-disabled="form.$invalid" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        
+  
+</form>
+
+
+
+
+
+
