@@ -1,5 +1,8 @@
 
 <h3>Lists all pubs </h3>
+<div>
+  <input type="text" placeholder="Sök" ng-model="search" />
+</div>
 <table class="highlight bordererd">
   <thead>
     <tr>
@@ -10,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr data-ng-repeat="pub in pubs.pubs">
+    <tr data-ng-repeat="pub in pubs.pubs | filter: search">
       <td><a ui-sref="pub({ id: pub.id })">{{ pub.name }}</a></td>
       <td>{{ pub.position.address }}</td>
       <td>{{ pub.phone_number }}</td>

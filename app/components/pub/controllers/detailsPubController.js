@@ -18,15 +18,9 @@ function DetailsPubController(PubService, $stateParams, NgMap, $rootScope) {
     .then(function(res) {
       vm.pub = res.pub;
       
+      // broadcast an event picked up in the MapController to 
+      // pan to a pub and open its marker on click in the list of pubs
       $rootScope.$broadcast("pubClicked", vm.pub);
-      
-      // NgMap
-      //   .getMap()
-      //   .then(function(map) {
-      //     map.setZoom(17);
-      //     var latLng = new google.maps.LatLng(vm.pub.position.latitude, vm.pub.position.longitude);
-      //     map.panTo(latLng);
-      //   })
     })
     .catch(function(error) {
       console.log("Error: ", error);
