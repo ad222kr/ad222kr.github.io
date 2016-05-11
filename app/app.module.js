@@ -1,4 +1,4 @@
-var app = angular.module('pub-map', ["ui.router", "ngMap", "ngResource"]);
+var app = angular.module('pub-map', ["ui.router", "ngMap", "ngResource", "ngFlash"]);
 
 app.config(function($httpProvider) {
   $httpProvider.defaults.cache = true;

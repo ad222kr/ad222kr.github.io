@@ -2,16 +2,16 @@ angular
   .module("pub-map")
   .controller("ListPubsController", ListPubsController);
 
-ListPubsController.$inject = ["PubService"];
+ListPubsController.$inject = ["PubService", "Flash"];
 
 /**
  * Handles showing all the pubs
  * 
  * @param PubService - Pub factory
  */
-function ListPubsController(PubService) {
+function ListPubsController(PubService, Flash) {
   var vm = this;
-
+  Flash.clear();
   PubService
     .getPubs()
     .then(function(data) {

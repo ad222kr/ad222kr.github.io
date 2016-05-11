@@ -2,7 +2,7 @@ angular
   .module("pub-map")
   .controller("MyPubsController", MyPubsController);
 
-  MyPubsController.$inject = ["PubService", "AuthService"];
+  MyPubsController.$inject = ["PubService", "AuthService", "Flash"];
 
   /**
    * Handles showing the current users pubs (creted by the current user)
@@ -10,8 +10,11 @@ angular
    * @param PubService - Pub factory
    * @param AuthService - Authentication factory
    */
-  function MyPubsController(PubService, AuthService) {
+  function MyPubsController(PubService, AuthService, Flash) {
+    Flash.clear();
     var vm = this;
+    
+    
     var email = AuthService.getCurrentUser().email;
 
     PubService
