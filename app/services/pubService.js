@@ -43,6 +43,10 @@ function PubService(API, ResourceService, $q) {
      */
     getPubById: function(id) {
       return ResourceService.getSingle(endpoint, id);
+    },
+    
+    addPub: function(pub) {
+      return ResourceService.post(endpoint, pub);
     }
   };
 

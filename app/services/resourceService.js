@@ -34,12 +34,16 @@ angular
         return resource.get({id: id}).$promise;
       },
       post: function(endpoint, resource) {
-        headers.Authorization = "Bearer " + AuthService.getUser().token;
-
-        var resource = $resource(API.url + endpoint, null, {
-          get: {
+        headers.Authorization = "Bearer " + AuthService.getCurrentUser().token;
+        console.log(AuthService.getCurrentUser().token)
+        var resource = $resource(API.URL + endpoint, null, {
+          post: {
             method: "POST",
-            headers: headers
+            headers: {
+              'Api-Key': API.KEY,
+              'Accept': API.FORMAT,
+              'Authorization': 'Bearer' + AuthService.getCurrentUser().token
+            }
           }
         });
         return resource.save(resource).$promise;

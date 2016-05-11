@@ -32,11 +32,22 @@
     <textarea name="description" id="description" ng-model="pub.description" required="" class="validate materialize-textarea"></textarea>
     <span class="help-inline" ng-show="submitted && form.address.$error.required">Required</span>
 
-  </div>   
-  <button ng-click="submitted=true" ng-disabled="form.$invalid" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-        
+  </div>  
+  
+  <div class="input-field">
+    <p ng-repeat="tag in pub.tags">
+      <input type="checkbox" id="tag-{{tag.id}}" value="{{tag.name}}" ng-model="tag.selected" />
+      <label for="tag-{{tag.id}}">{{tag.name}}</label>
+    </p>
+  </div>
+    
+  <div class="input-field">
+    <button ng-click="submitted=true" ng-disabled="form.$invalid" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+  </div>
   
 </form>
+
+        
 
 
 
