@@ -4,51 +4,49 @@ angular
 
 PubService.$inject = ["API", "ResourceService", "$q"];
 
+/**
+ * Handles RESTful calls to the api/pubs endpoint
+ * 
+ * @param API - Constant object with API-stuf, declared in app.constants.js
+ * @param ResourceService - Resource factory
+ * @param $q 
+ * @returns - The factory
+ */
 function PubService(API, ResourceService, $q) {
   var endpoint = "api/pubs";
   var store = {
+    /**
+     * Gets all the pubs
+     * 
+     * @returns {Promise} - a list of pubs on resolve
+     */
     getPubs: function() {
-      // var deferred = $q.defer();
-      // ResourceService
-      //   .getAll(endpoint)
-      //   .then(function(response) {
-      //     deferred.resolve(response);
-      //   })
-      //   .catch(function(error) {
-      //     deferred.reject(error);
-      //   });
-      //   return deferred.promise;
       console.log("Hey I am Inside you getPubs");
       return ResourceService.getAll(endpoint);
     },
 
+    /**
+     * Gets a pub by a users email
+     * 
+     * @param email
+     * @returns {Promise} - a list of the users pubs on resolve
+     */
     getPubsByEmail: function(email) {
-      // var deferred = $q.defer();
-      // ResourceService
-      //   .getAll(endpoint, { email: email })
-      //   .then(function(response) {
-      //     deferred.resolve(response);
-      //   })
-      //   .catch(function(error) {
-      //     deferred.reject(error);
-      //   });
-      // return deferred.promise;
       return ResourceService.getAll(endpoint, { email: email });
     },
 
+    /**
+     * Gets a single pub 
+     * 
+     * @param id 
+     * @returns {Promise} - a single pub on resolve
+     */
     getPubById: function(id) {
-      // var deferred = $q.defer();
-
-      // ResourceService
-      //  .getSingle(endpoint, id)
-      //  .then(function(data) {
-      //    deferred.resolve(data);
-      //  })
-      //  .catch(function(error) {
-      //    deferred.reject(error);
-      //  })
-      //  return deferred.promise;
       return ResourceService.getSingle(endpoint, id);
+    },
+    
+    addPub: function(pub) {
+      return ResourceService.post(endpoint, pub);
     }
   };
 

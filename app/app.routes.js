@@ -16,6 +16,26 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "ListPubsController",
       controllerAs: "pubs",
     })
+    .state("new-pub", {
+      url: "/pubs/new",
+      templateUrl: "app/components/pub/views/new-pub.html",
+      controller: "AddPubController",
+      controllerAs: "pub",
+      resolve: {
+        // DRY here
+        auth: function($q, AuthService, $location) {
+          var deferred = $q.defer();
+          var user = AuthService.getCurrentUser();
+          console.log(user);
+          if (user) {
+            return $q.when(user);
+          } else {
+            $location.path("/login"); // hacky solution cus $stateChangeError event does not seem to fire....
+            return $q.reject({ authenticated: false, hehe: function() { console.log("rejected"); } });
+          }
+        }
+      }
+    })
     .state("pub", {
       url: "/pubs/:id",
       templateUrl: "app/components/pub/views/pub-details.html",
@@ -36,7 +56,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       resolve: {
         auth: function($q, AuthService, $location) {
           var deferred = $q.defer();
-          var user = AuthService.getUser();
+          var user = AuthService.getCurrentUser();
           console.log(user);
           if (user) {
             return $q.when(user);

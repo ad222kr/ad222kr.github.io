@@ -4,6 +4,12 @@ angular
 
 LoginController.$inject = ["AuthService", "$location"];
 
+/**
+ * Handles signin in users in the application
+ * 
+ * @param AuthService - Authentication Factory
+ * @param $location - Angular location module
+ */
 function LoginController(AuthService, $location) {
   vm = this;
   vm.login = function() {
