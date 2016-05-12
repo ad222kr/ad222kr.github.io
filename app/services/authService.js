@@ -4,14 +4,31 @@ angular
 
   AuthService.$inject = ["$http", "$q", "API", "$rootScope", "$window"];
 
+  /**
+   * The factory/service for logging in/out users 
+   * from the API knock/auth_token endpoint
+   * 
+   * @param $http 
+   * @param $q 
+   * @param API - Constant object with API-stuf, declared in app.constants.js
+   * @param $rootScope 
+   * @returns - The factory
+   */
   function AuthService($http, $q, API, $rootScope) {
     var url = API.URL + "knock/auth_token";
-    var user = null;
-    var storageKey = "user";
+    var currentUser = null;
+    var storageKey = "currentUser";
     var store = {
 
+      /**
+       * Authenticates a user
+       * 
+       * @param email 
+       * @param password 
+       * @returns {Promise} - wheter the user was authenticated or not
+       */
       authenticateUser: function(email, password) {
-        var deferred = $q.defer();
+
         var request = {
           method: "POST",
           url: url,
@@ -26,49 +43,61 @@ angular
             }
           }
         };
-
-        $http(request)
-          .then(function(response) {
-            console.log("200 user found!");
-            user = { email: email, token: response.data.jwt };
-            store.loginUser();
-            deferred.resolve(user);
-          })
-          .catch(function(error) {
-            console.error("404 user not found");
-            deferred.reject(error);
-          });
-         return deferred.promise;
+        
+        return $http(request);
       },
 
-      loginUser: function() {
+      /**
+       * logs in a user
+       * 
+       * @param {Object} - User object, example: { email: smt@smt.com, token: xasdasda } 
+       */
+      loginUser: function(user) {
+        currentUser = user;
         $rootScope.loggedIn = true;
-        localStorage.setItem(storageKey, JSON.stringify(user));
+        localStorage.setItem(storageKey, JSON.stringify(currentUser));
       },
 
+      /**
+       * logs out user
+       */
       logoutUser: function() {
-        user = null;
+        currentUser = null;
         $rootScope.loggedIn = false;
         localStorage.removeItem(storageKey);
       },
 
-      getUser: function() {
-        return user || JSON.parse(localStorage.getItem(storageKey));
+      /**
+       * gets current user
+       * 
+       * @returns {Object} - the current user, example { email: lol@heh.com, token: axaxaxa }
+       */
+      getCurrentUser: function() {
+        return currentUser || JSON.parse(localStorage.getItem(storageKey));
       },
 
+      /**
+       * checks if the user is authenticated
+       * 
+       * @returns {boolean}
+       */
       isAuthenticated: function() {
-        console.log("isAuthenticated() called, returned: " + store.getUser());
-        return store.getUser() !== null;
+        console.log("isAuthenticated() called, returned: " + store.getcurrentUser());
+        return store.getcurrentUser() !== null;
       },
 
+      /**
+       * Initiates the singleton store, to get the user and try to sign in 
+       * on a page reload (to retain logged in state)
+       */
       init: function() {
-        if (store.getUser()) {
-          user = JSON.parse(localStorage.getItem(storageKey));
+        if (store.getCurrentUser()) {
+          currentUser = JSON.parse(localStorage.getItem(storageKey));
           $rootScope.loggedIn = true;
         }
       }
 
     }
-    store.init(); // run this on page reload to get user from localStorage
+    store.init(); // run this on page reload to get currentUser from localStorage
     return store;
   }

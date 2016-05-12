@@ -2,9 +2,9 @@ angular
   .module("pub-map")
   .factory("ResourceService", ResourceService);
 
-  ResourceService.$inject = ["$resource", "API", "AuthService"];
+  ResourceService.$inject = ["$resource", "API", "AuthService", "$http", "$cacheFactory"];
 
-  function ResourceService($resource, API, AuthService) {
+  function ResourceService($resource, API, AuthService, $http, $cacheFactory) {
     "use strict";
     var resourceName = null;
     var headers = {
@@ -15,6 +15,8 @@ angular
     var store = {
       getAll: function (endpoint, params) {
         if (typeof params !== "object") params = null;
+        var $httpDefaultCache = $cacheFactory.get("$http");
+        console.log($httpDefaultCache);
         var resource = $resource(API.URL + endpoint, params, {
           query: {
             method: "GET",
@@ -34,15 +36,16 @@ angular
         return resource.get({id: id}).$promise;
       },
       post: function(endpoint, resource) {
-        headers.Authorization = "Bearer " + AuthService.getUser().token;
-
-        var resource = $resource(API.url + endpoint, null, {
-          get: {
-            method: "POST",
-            headers: headers
-          }
-        });
-        return resource.save(resource).$promise;
+        // $http used for post since $resource does not send the
+        // token, so I get 401 unauthorized.. cba rewriting the other ones
+        headers.Authorization = "Bearer " + AuthService.getCurrentUser().token;
+        var url = API.URL + endpoint;
+        var config = {
+          method: "POST",
+          headers: headers
+        };
+        $cacheFactory.get("$http").removeAll(); // remove everything cus Im lazy
+        return $http.post(url, resource, config);
       }
     };
 

@@ -21,8 +21,9 @@
       <nav>
       <div class="nav-wrapper">
         <ul class="left hide-on-med-and-down">
-          <li><a ui-sref="pubs">Alla pubar</a></li>
-          <li><a ui-sref="my-pubs" ng-show="loggedIn">Mina pubar</a></li>
+          <li ui-sref-active="active"><a ui-sref="pubs">Alla pubar</a></li>
+          <li ui-sref-active="active"><a ui-sref="my-pubs" ng-show="loggedIn">Mina pubar</a></li>
+          <li ui-sref-active="active"><a ui-sref="new-pub" ng-show="loggedIn">Lägg till pub</a></li>
 
         </ul>
         <a href="#" class="brand-logo center">PubKartan!</a>
@@ -39,6 +40,7 @@
       </div>
       </nav>
       <div class="content">
+        <flash-message></flash-message>
         <div class="row">
           <div class="col s12 m12 l6">
             <ui-view></ui-view>
@@ -80,8 +82,11 @@
 
     <!-- services -->
     <script src="app/services/resourceService.js"></script>
-    <script src="app/services/pubService.js"></script>
     <script src="app/services/authService.js" charset="utf-8"></script>
+    <script src="app/services/tagService.js"></script>
+    <script src="app/services/pubService.js"></script>
+    
+    
 
     <!-- components -->
     <script src="app/components/main/controllers/mainController.js"></script>
@@ -91,8 +96,11 @@
     <script src="app/components/auth/controllers/loginController.js"></script>
     <script src="app/components/pub/controllers/myPubsController.js"></script>
     <script src="app/components/auth/controllers/logoutController.js"></script>
+    <script src="app/components/pub/controllers/addPubController.js"></script>
+    
     <!-- directives -->
     <script src="app/components/map/directives/bmMap.js"></script>
+    <script src="app/components/pub/directives/pmPub.js"></script>
   </body>
 
 </html>

@@ -1,4 +1,4 @@
-var app = angular.module('pub-map', ["ui.router", "ngMap", "ngResource"]);
+var app = angular.module('pub-map', ["ui.router", "ngMap", "ngResource", "ngFlash"]);
 
 app.config(function($httpProvider) {
   $httpProvider.defaults.cache = true;
@@ -8,15 +8,6 @@ app.config(function($logProvider){
 });
 
 app.run(function($rootScope, $state, AuthService) {
-  console.log($rootScope);
-
-  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-    console.log("stateChangeStart");
-    if (toState.authenticate && !AuthService.isAuthenticated()) {
-      $state.transitionTo("login");
-      event.preventDefault();
-    }
-  });
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     // THIS DOES NOT FIRE ON A STATE CHANGE SUCCESS GOD WHY
