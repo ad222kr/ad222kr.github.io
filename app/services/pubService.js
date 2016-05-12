@@ -20,7 +20,7 @@ function PubService(API, ResourceService, $q) {
      * 
      * @returns {Promise} - a list of pubs on resolve
      */
-    getPubs: function() {
+    getPubs: function(paginationParams) {
       console.log("Hey I am Inside you getPubs");
       return ResourceService.getAll(endpoint + "?limit=30");
     },

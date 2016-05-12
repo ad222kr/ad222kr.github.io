@@ -12,11 +12,13 @@ DetailsPubController.$inject = ["PubService", "$stateParams", "NgMap", "$rootSco
  */
 function DetailsPubController(PubService, $stateParams, NgMap, $rootScope) {
   var vm = this;
+  vm.loaded = false;
 
   PubService
     .getPubById($stateParams.id)
     .then(function(res) {
       vm.pub = res.pub;
+      vm.loaded = true;
       
       // broadcast an event picked up in the MapController to 
       // pan to a pub and open its marker on click in the list of pubs

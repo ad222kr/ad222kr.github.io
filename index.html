@@ -21,9 +21,9 @@
       <nav>
       <div class="nav-wrapper">
         <ul class="left hide-on-med-and-down">
-          <li><a ui-sref="pubs">Alla pubar</a></li>
-          <li><a ui-sref="my-pubs" ng-show="loggedIn">Mina pubar</a></li>
-          <li><a ui-sref="new-pub" ng-show="loggedIn">Lägg till pub</a></li>
+          <li ui-sref-active="active"><a ui-sref="pubs">Alla pubar</a></li>
+          <li ui-sref-active="active"><a ui-sref="my-pubs" ng-show="loggedIn">Mina pubar</a></li>
+          <li ui-sref-active="active"><a ui-sref="new-pub" ng-show="loggedIn">Lägg till pub</a></li>
 
         </ul>
         <a href="#" class="brand-logo center">PubKartan!</a>
@@ -100,6 +100,7 @@
     
     <!-- directives -->
     <script src="app/components/map/directives/bmMap.js"></script>
+    <script src="app/components/pub/directives/pmPub.js"></script>
   </body>
 
 </html>

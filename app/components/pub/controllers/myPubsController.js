@@ -13,6 +13,7 @@ angular
   function MyPubsController(PubService, AuthService, Flash) {
     Flash.clear();
     var vm = this;
+    vm.title = "Mina pubar"
     
     
     var email = AuthService.getCurrentUser().email;

@@ -1,12 +1,10 @@
-<h3 ng-bind="pub.pub.name"> </h3>
-<div>{{ pub.pub.address }} </div>
-<div>{{ pub.pub.phone_number }} </div>
-<div>{{ pub.pub.description }}</div>
-<div>{{ pub.pub.creator.email }}</div>
+<div class="progress" ng-hide="pub.loaded">
+    <div class="indeterminate"></div>
+</div>
+        
+<pm-pub ng-show="pub.loaded"></pm-pub>
 
-
-<h5>Tags!</h5>
-<ul>
-  <li data-ng-repeat="tag in pub.pub.tags" ng-bind="tag.name">
-  </li>
-</ul>
+<button ng-show="pub.loaded" class="waves-effect waves-light btn" onclick="history.back()">Tillbaka</button>
+<a ng-show="pub.loaded" class="waves-effect waves-light btn green">Redigera</a>
+<a ng-show="pub.loaded" class="waves-effect waves-light btn red">Ta bort</a>
+</div>

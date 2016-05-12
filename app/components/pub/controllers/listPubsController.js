@@ -11,6 +11,8 @@ ListPubsController.$inject = ["PubService", "Flash"];
  */
 function ListPubsController(PubService, Flash) {
   var vm = this;
+  vm.title = "Alla pubar";
+  
   Flash.clear();
   PubService
     .getPubs()
