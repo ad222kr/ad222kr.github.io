@@ -1,0 +1,18 @@
+<form name="form" id="edit-pub-form" novalidate role="form"
+  ng-submit="pub.update()" ng-show="EditCtrl.pub">
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && form.name.$invalid]">
+    <label class="active" for="name">Name</label>
+    <input type="text" name="name" ng-model="EditCtrl.pub.name" required />
+    <span class="help-inline" ng-show="submitted && form.name.$error.required">Required</span>
+  </div>
+  
+  
+  <div class="input-field" ng-class="{true: 'error'}[submitted && touched && form.phone.$invalid]">
+    <label class="control-label" for="phone">Phone number</label>
+    
+    <input type="number" name="phone" ng-maxlength="EditCtrl.pub.phone" required />
+    <span class="help-inline" ng-show="submitted && touched && form.phone.$error.required">Required</span>
+     
+  </div>
+</form>
