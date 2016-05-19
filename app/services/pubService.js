@@ -47,6 +47,10 @@ function PubService(API, ResourceService, $q) {
     
     addPub: function(pub) {
       return ResourceService.post(endpoint, pub);
+    },
+    
+    updatePub: function(pub, id) {
+      return ResourceService.put(endpoint, id, pub);
     }
   };
 

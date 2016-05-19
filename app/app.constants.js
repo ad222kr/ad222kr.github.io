@@ -8,3 +8,4 @@ app.constant("LS", {
   "pubs-key": "pubs",
   "tags-key": "tags"
 });
+  
