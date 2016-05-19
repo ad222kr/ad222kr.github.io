@@ -1,17 +1,17 @@
-Hehehe
-  <h3 ng-bind="pub.pub.name"> </h3>
-  <h5 >Adress</h5>
-  <div>{{ pub.pub.position.address }} </div>
-  <h5 >Telefonnummer</h5>
-  <div>{{ pub.pub.phone_number }} </div>
-  <h5 >Beskrivning</h5>
-  <div>{{ pub.pub.description }}</div>
-  <h5 >Skapare</h5>
-  <div>{{ pub.pub.creator.email }}</div>
+
+<h3 ng-bind="pub.pub.name"> </h3>
+<h5 >Adress</h5>
+<div>{{ pub.pub.position.address }} </div>
+<h5 >Telefonnummer</h5>
+<div>{{ pub.pub.phone_number }} </div>
+<h5 >Beskrivning</h5>
+<div>{{ pub.pub.description }}</div>
+<h5 >Skapare</h5>
+<div>{{ pub.pub.creator.email }}</div>
 
 
-  <h5 >Tags!</h5>
-  <ul>
-    <li data-ng-repeat="tag in pub.pub.tags" ng-bind="tag.name">
-    </li>
-  </ul>
+<h5 >Tags!</h5>
+<ul>
+  <li data-ng-repeat="tag in pub.pub.tags" ng-bind="tag.name">
+  </li>
+</ul>
