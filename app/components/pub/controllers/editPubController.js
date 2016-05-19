@@ -7,12 +7,12 @@ EditPubController.$inject = [
   "AuthService", 
   "TagService",
   "$location",
-  "Flash",
+  "FlashService",
   "$stateParams"
 ];
 
-function EditPubController(PubService, AuthService, TagService, $location, Flash, $stateParams) {
-  Flash.clear();
+function EditPubController(PubService, AuthService, TagService, $location, FlashService, $stateParams) {
+  FlashService.clear();
   var vm = this;
   vm.loaded = false;
   PubService
@@ -22,11 +22,11 @@ function EditPubController(PubService, AuthService, TagService, $location, Flash
       vm.loaded = true;
     })
     .catch(function(error) {
-      console.log("Error: " + error);
+      FlashService.createErrorFlash(error);
     });
     
     vm.update = function() {
-      Flash.clear();
+      FlashService.clear();
       var pub = {
         pub: {
           name: vm.pub.name,
@@ -38,23 +38,11 @@ function EditPubController(PubService, AuthService, TagService, $location, Flash
       PubService.updatePub(pub, vm.pub.id)
         .then(function(res) {
           var message = "<p>You updated a pub! Congrats</p>";
-          var flashId = Flash.create("success", message, 0, { class: "custom-class" }, true);
+          FlashService.createSuccessFlash(message);
           $location.url("/pubs/" + vm.pub.id);
-          console.log(res);
         })
         .catch(function(error) {
-          var message = "";
-          if (typeof error.data.errors === "object") {
-            message = "<p>"
-            Object.keys(error.data.errors).forEach(function(key) {
-              message += key + " " + error.data.errors[key];
-            });
-            message += "</p>";
-          } else {
-            message = "<p>" + error.data.errors + "</p>";
-          }
-          
-          var flashId = Flash.create("danger", message, 0, {class: "custom-class"}, true);
+          FlashService.createErrorFlash(error);
         });
     }
   

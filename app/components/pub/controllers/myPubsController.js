@@ -2,7 +2,11 @@ angular
   .module("pub-map")
   .controller("MyPubsController", MyPubsController);
 
-  MyPubsController.$inject = ["PubService", "AuthService", "Flash"];
+  MyPubsController.$inject = [
+    "PubService", 
+    "AuthService", 
+    "FlashService"
+  ];
 
   /**
    * Handles showing the current users pubs (creted by the current user)
@@ -10,8 +14,8 @@ angular
    * @param PubService - Pub factory
    * @param AuthService - Authentication factory
    */
-  function MyPubsController(PubService, AuthService, Flash) {
-    Flash.clear();
+  function MyPubsController(PubService, AuthService, FlashService) {
+    FlashService.clear();
     var vm = this;
     vm.title = "Mina pubar"
     vm.loaded = false;
@@ -27,6 +31,6 @@ angular
         vm.loaded = true;
       })
       .catch(function(error) {
-        console.log("Error: " + error);
+        FlashService.createErrorFlash(error);
       });
   }

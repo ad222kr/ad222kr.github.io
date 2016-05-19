@@ -2,19 +2,22 @@ angular
   .module("pub-map")
   .controller("ListPubsController", ListPubsController);
 
-ListPubsController.$inject = ["PubService", "Flash"];
+ListPubsController.$inject = [
+  "PubService", 
+  "FlashService"
+];
 
 /**
  * Handles showing all the pubs
  * 
  * @param PubService - Pub factory
  */
-function ListPubsController(PubService, Flash) {
+function ListPubsController(PubService, FlashService) {
   var vm = this;
   vm.title = "Alla pubar";
   vm.loaded = false;
   
-  Flash.clear();
+  FlashService.clear();
   PubService
     .getPubs()
     .then(function(data) {
@@ -23,6 +26,6 @@ function ListPubsController(PubService, Flash) {
       vm.loaded = true;
     })
     .catch(function(error) {
-      console.log("Error: " + error)
+      FlashService.createErrorFlash(error);
     });
 }

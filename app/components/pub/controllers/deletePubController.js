@@ -6,11 +6,11 @@ DeletePubController.$inject = [
   "PubService",
   "AuthService",
   "$location",
-  "Flash",
+  "FlashService",
   "$stateParams"
 ];
 
-function DeletePubController(PubService, AuthService, $location, Flash, $stateParams) {
+function DeletePubController(PubService, AuthService, $location, FlashService, $stateParams) {
   Flash.clear();
   var vm = this;
   vm.loaded = false;
@@ -23,7 +23,7 @@ function DeletePubController(PubService, AuthService, $location, Flash, $statePa
       vm.loaded = true;
     })
     .catch(function(error) {
-      
+      FlashService.createErrorFlash(error);
     });
   
   vm.confirmDelete = function() {
