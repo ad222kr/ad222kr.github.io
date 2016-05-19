@@ -5,6 +5,7 @@
 <pm-pub ng-show="pub.loaded"></pm-pub>
 
 <button ng-show="pub.loaded" class="waves-effect waves-light btn" onclick="history.back()">Tillbaka</button>
-<a ng-show="pub.loaded" class="waves-effect waves-light btn green">Redigera</a>
-<a ng-show="pub.loaded" class="waves-effect waves-light btn red">Ta bort</a>
+<a ui-sref="edit-pub({id: pub.pub.id})" ng-show="loggedIn" class="waves-effect waves-light btn green">Redigera</a>
+
+
 </div>

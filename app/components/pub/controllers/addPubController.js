@@ -2,7 +2,13 @@ angular
   .module("pub-map")
   .controller("AddPubController", AddPubController);
 
-AddPubController.$inject = ["PubService", "AuthService", "TagService", "$location", "Flash"];
+AddPubController.$inject = [
+  "PubService", 
+  "AuthService", 
+  "TagService", 
+  "$location", 
+  "Flash"
+];
 
 function AddPubController(PubService, AuthService, TagService, $location, Flash) {
   

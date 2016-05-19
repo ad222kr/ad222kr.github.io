@@ -8,6 +8,11 @@
   padding: 0 10px;
 }
 
+.nav-wrapper {
+   background-color:   #607d8b;
+   width: 100%;
+}
+
 .content {
   padding: 10px;
 }

@@ -46,6 +46,17 @@ angular
         };
         $cacheFactory.get("$http").removeAll(); // remove everything cus Im lazy
         return $http.post(url, resource, config);
+      },
+      
+      put: function(endpoint, id, resource) {
+        headers.Authorization = "Bearer " + AuthService.getCurrentUser().token;
+        var url = API.URL + endpoint + "/" + id;
+        var config = {
+          method: "PUT",
+          headers: headers
+        };
+        $cacheFactory.get("$http").removeAll();
+        return $http.put(url, resource, config);
       }
     };
 
