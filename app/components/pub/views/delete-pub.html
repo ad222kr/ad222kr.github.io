@@ -1,0 +1,8 @@
+<div class="progress" ng-hide="DeleteCtrl.loaded">
+    <div class="indeterminate"></div>
+</div>
+<div ng-show="DeleteCtrl.loaded">
+<h2>Är du säker på att du vill ta bort puben {{ DeleteCtrl.pub.name }}</span>?</h2>
+<button class="waves-effect waves-light btn red" ng-click="DeleteCtrl.confirmDelete()">Ja</button>
+<button class="waves-effect waves-light btn green" ng-click="DeleteCtrl.cancelDelete()">Nej</button>
+</div>

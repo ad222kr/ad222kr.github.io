@@ -12,40 +12,21 @@ EditPubController.$inject = [
 ];
 
 function EditPubController(PubService, AuthService, TagService, $location, Flash, $stateParams) {
+  Flash.clear();
   var vm = this;
   vm.loaded = false;
   PubService
     .getPubById($stateParams.id)
     .then(function(res) {
-      // vm.pub = res.pub;
-      // console.log(vm.pub);
-      // console.log(vm.pub.phone_number)
       vm.pub = res.pub;
-      return vm.pub;
-    })
-    .then(function() {
-      TagService.getTags()
-        .then(function(res) {
-          vm.tags = res.tags;
-          vm.tags.forEach(function(tag) {
-            vm.pub.tags.forEach(function(pubTag) {
-              if (tag.id === pubTag.id) {
-                console.log("Tag match!");
-                tag.selected = true;
-              }
-            });
-          });
-          vm.loaded = true;
-        })
-        .catch(function(error) {
-          console.log("Error: " + error);
-        })
+      vm.loaded = true;
     })
     .catch(function(error) {
       console.log("Error: " + error);
     });
     
     vm.update = function() {
+      Flash.clear();
       var tags = vm.tags.filter(function(tag) {
         return tag.selected === true;
       })
@@ -56,22 +37,30 @@ function EditPubController(PubService, AuthService, TagService, $location, Flash
           name: vm.pub.name,
           phone_number: vm.pub.phone_number,
           description: vm.pub.description,
-          position: {
-            address: vm.pub.position.address
-          },
-          tags: tags
         }
       };
       
       PubService.updatePub(pub, vm.pub.id)
         .then(function(res) {
+          var message = "<p>You updated a pub! Congrats</p>";
+          var flashId = Flash.create("success", message, 0, { class: "custom-class" }, true);
+          $location.url("/pubs/" + vm.pub.id);
           console.log(res);
         })
         .catch(function(error) {
-          console.log(error);
+          var message = "";
+          if (typeof error.data.errors === "object") {
+            message = "<p>"
+            Object.keys(error.data.errors).forEach(function(key) {
+              message += key + " " + error.data.errors[key];
+            });
+            message += "</p>";
+          } else {
+            message = "<p>" + error.data.errors + "</p>";
+          }
+          
+          var flashId = Flash.create("danger", message, 0, {class: "custom-class"}, true);
         });
-      
-      
     }
   
 }

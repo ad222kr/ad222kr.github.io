@@ -27,6 +27,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         
       }
     })
+    .state("delete-pub", {
+      url: "/pubs/:id/delete",
+      templateUrl: "app/components/pub/views/delete-pub.html",
+      controller: "DeletePubController",
+      controllerAs: "DeleteCtrl",
+      resolve: {
+        auth: authenicate
+      }
+    })
     .state("pub", {
       url: "/pubs/:id",
       templateUrl: "app/components/pub/views/pub-details.html",
