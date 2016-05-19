@@ -27,11 +27,6 @@ function EditPubController(PubService, AuthService, TagService, $location, Flash
     
     vm.update = function() {
       Flash.clear();
-      var tags = vm.tags.filter(function(tag) {
-        return tag.selected === true;
-      })
-      //vm.pub.tags = tags; // overwrite with newly selected tags
-      console.table(vm.pub);
       var pub = {
         pub: {
           name: vm.pub.name,
