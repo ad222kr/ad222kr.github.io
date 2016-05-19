@@ -12,6 +12,7 @@ ListPubsController.$inject = ["PubService", "Flash"];
 function ListPubsController(PubService, Flash) {
   var vm = this;
   vm.title = "Alla pubar";
+  vm.loaded = false;
   
   Flash.clear();
   PubService
@@ -19,6 +20,7 @@ function ListPubsController(PubService, Flash) {
     .then(function(data) {
       console.log(data);
       vm.pubs = data.pubs;
+      vm.loaded = true;
     })
     .catch(function(error) {
       console.log("Error: " + error)

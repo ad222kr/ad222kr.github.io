@@ -13,7 +13,7 @@
   <div class="input-field" ng-class="{true: 'error'}[submitted && touched && form.phone.$invalid]">
     <label class="control-label" for="phone">Phone number</label>
 
-    <input type="number" name="phone" ng-model="pub.phone" required />
+    <input type="text" name="phone" ng-model="pub.phone" required />
     <span class="help-inline" ng-show="submitted && touched && form.phone.$error.required">Required</span>
 
   </div> 

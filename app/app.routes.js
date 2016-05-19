@@ -23,17 +23,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: "pub",
       resolve: {
         // DRY here
-        auth: function($q, AuthService, $location) {
-          var deferred = $q.defer();
-          var user = AuthService.getCurrentUser();
-          console.log(user);
-          if (user) {
-            return $q.when(user);
-          } else {
-            $location.path("/login"); // hacky solution cus $stateChangeError event does not seem to fire....
-            return $q.reject({ authenticated: false, hehe: function() { console.log("rejected"); } });
-          }
-        }
+        auth: authenicate
+        
+      }
+    })
+    .state("delete-pub", {
+      url: "/pubs/:id/delete",
+      templateUrl: "app/components/pub/views/delete-pub.html",
+      controller: "DeletePubController",
+      controllerAs: "DeleteCtrl",
+      resolve: {
+        auth: authenicate
       }
     })
     .state("pub", {
@@ -54,17 +54,16 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "MyPubsController",
       controllerAs: "pubs",
       resolve: {
-        auth: function($q, AuthService, $location) {
-          var deferred = $q.defer();
-          var user = AuthService.getCurrentUser();
-          console.log(user);
-          if (user) {
-            return $q.when(user);
-          } else {
-            $location.path("/login"); // hacky solution cus $stateChangeError event does not seem to fire....
-            return $q.reject({ authenticated: false, hehe: function() { console.log("rejected"); } });
-          }
-        }
+        auth: authenicate
+      }
+    })
+    .state("edit-pub", {
+      url: "/pubs/:id/edit",
+      templateUrl: "app/components/pub/views/edit-pub.html",
+      controller: "EditPubController",
+      controllerAs: "EditCtrl",
+      resolve: {
+        auth: authenicate
       }
     })
     .state("logout", {
@@ -77,3 +76,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     });
 });
+
+function authenicate($q, AuthService, $location) {
+  var deffered = $q.defer();
+  var user = AuthService.getCurrentUser();
+  if (user) { return $q.when(user); }
+  else {
+    $location.path("/login");
+    return $q.reject({ authenticated: false })
+  }
+}

@@ -14,6 +14,7 @@ angular
     Flash.clear();
     var vm = this;
     vm.title = "Mina pubar"
+    vm.loaded = false;
     
     
     var email = AuthService.getCurrentUser().email;
@@ -23,6 +24,7 @@ angular
       .then(function(res) {
         console.log(res);
         vm.pubs = res.pubs;
+        vm.loaded = true;
       })
       .catch(function(error) {
         console.log("Error: " + error);

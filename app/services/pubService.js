@@ -16,19 +16,14 @@ function PubService(API, ResourceService, $q) {
   var endpoint = "api/pubs";
   var store = {
     /**
-     * Gets all the pubs
-     * 
      * @returns {Promise} - a list of pubs on resolve
      */
     getPubs: function(paginationParams) {
-      console.log("Hey I am Inside you getPubs");
       return ResourceService.getAll(endpoint + "?limit=30");
     },
 
     /**
-     * Gets a pub by a users email
-     * 
-     * @param email
+     * @param {String} email
      * @returns {Promise} - a list of the users pubs on resolve
      */
     getPubsByEmail: function(email) {
@@ -36,8 +31,6 @@ function PubService(API, ResourceService, $q) {
     },
 
     /**
-     * Gets a single pub 
-     * 
      * @param id 
      * @returns {Promise} - a single pub on resolve
      */
@@ -45,8 +38,16 @@ function PubService(API, ResourceService, $q) {
       return ResourceService.getSingle(endpoint, id);
     },
     
+    /**
+     * @param pub (description)
+     * @returns (description)
+     */
     addPub: function(pub) {
       return ResourceService.post(endpoint, pub);
+    },
+    
+    updatePub: function(pub, id) {
+      return ResourceService.put(endpoint, id, pub);
     }
   };
 
