@@ -11,6 +11,6 @@ MainController.$inject = ["$rootScope", "$location"];
  * @param $location 
  */
 function MainController($rootScope, $location) {
-  console.log("HAI GUYS I AM MAIN CTONRLERR");
+  // dont remember why i created this... 
 
 }

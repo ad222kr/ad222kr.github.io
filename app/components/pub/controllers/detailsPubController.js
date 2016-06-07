@@ -2,7 +2,13 @@ angular
   .module("pub-map")
   .controller("DetailsPubController", DetailsPubController);
 
-DetailsPubController.$inject = ["PubService", "$stateParams", "NgMap", "$rootScope"];
+DetailsPubController.$inject = [
+  "PubService", 
+  "$stateParams", 
+  "NgMap", 
+  "$rootScope", 
+  "FlashService"
+];
 
 /**
  * Handles showing a single pub
@@ -10,7 +16,7 @@ DetailsPubController.$inject = ["PubService", "$stateParams", "NgMap", "$rootSco
  * @param PubService - Pub factory
  * @param $stateParams - for retreiving the id of the pub
  */
-function DetailsPubController(PubService, $stateParams, NgMap, $rootScope) {
+function DetailsPubController(PubService, $stateParams, NgMap, $rootScope, FlashService) {
   var vm = this;
   vm.loaded = false;
 
@@ -25,6 +31,6 @@ function DetailsPubController(PubService, $stateParams, NgMap, $rootScope) {
       $rootScope.$broadcast("pubClicked", vm.pub);
     })
     .catch(function(error) {
-      console.log("Error: ", error);
+      FlashService.createErrorFlash(error);
     });
 }

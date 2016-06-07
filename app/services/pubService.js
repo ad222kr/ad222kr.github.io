@@ -48,6 +48,10 @@ function PubService(API, ResourceService, $q) {
     
     updatePub: function(pub, id) {
       return ResourceService.put(endpoint, id, pub);
+    },
+
+    deletePub: function(id) {
+      return ResourceService.delete(endpoint, id);
     }
   };
 

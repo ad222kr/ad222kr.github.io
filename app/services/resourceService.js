@@ -16,7 +16,6 @@ angular
       getAll: function (endpoint, params) {
         if (typeof params !== "object") params = null;
         var $httpDefaultCache = $cacheFactory.get("$http");
-        console.log($httpDefaultCache);
         var resource = $resource(API.URL + endpoint, params, {
           query: {
             method: "GET",
@@ -57,6 +56,17 @@ angular
         };
         $cacheFactory.get("$http").removeAll();
         return $http.put(url, resource, config);
+      },
+
+      delete: function(endpoint, id) {
+        headers.Authorization = "Bearer " + AuthService.getCurrentUser().token;
+        var url = API.URL + endpoint + "/" + id;
+        var config = {
+          method: "DELETE",
+          headers: headers
+        };
+        $cacheFactory.get("$http").removeAll();
+        return $http.delete(url, config);
       }
     };
 

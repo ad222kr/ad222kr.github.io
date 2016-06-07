@@ -17,6 +17,15 @@
   padding: 10px;
 }
 
+.tags-filter {
+  list-style: none;
+}
+
+.tags-filter li {
+  display: inline-block;
+  vertical-align: top;
+}
+
 
 @media (min-width: 700px) {
 
