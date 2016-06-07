@@ -6,6 +6,15 @@
 <div>
   <input type="text" placeholder="Sök" ng-model="search" />
 </div>
+  <ul class="tags-filter">
+  <li data-ng-repeat="tag in pubs.tags">
+    <input ng-model="pubs.filter[tag.id]" type="checkbox" id="{{ tag.id }}" value="{{ tag.name }}" />
+    <label for="{{ tag.id }}">{{ tag.name }}</label>
+  </li>
+  </ul>
+<div>
+  
+</div>
 <table class="highlight bordererd">
   <thead>
     <tr>
@@ -16,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr data-ng-repeat="pub in pubs.pubs | filter: search">
+    <tr data-ng-repeat="pub in pubs.pubs | filter: search | filter: pubs.filterByTags">
       <td><a ui-sref="pub({ id: pub.id })">{{ pub.name }}</a></td>
       <td>{{ pub.position.address }}</td>
       <td>{{ pub.phone_number }}</td>

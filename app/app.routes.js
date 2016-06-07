@@ -51,7 +51,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     .state("my-pubs", {
       url: "/my-pubs",
       templateUrl: "app/components/pub/views/pub-list.html",
-      controller: "MyPubsController",
+      controller: "ListPubsController",
       controllerAs: "pubs",
       resolve: {
         auth: authenicate
