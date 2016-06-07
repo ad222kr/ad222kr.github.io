@@ -7,11 +7,11 @@ DeletePubController.$inject = [
   "AuthService",
   "$location",
   "FlashService",
-  "$stateParams"
+  "$stateParams",
+  "$rootScope"
 ];
 
-function DeletePubController(PubService, AuthService, $location, FlashService, $stateParams) {
-  Flash.clear();
+function DeletePubController(PubService, AuthService, $location, FlashService, $stateParams, $rootScope) {
   var vm = this;
   vm.loaded = false;
   
@@ -19,7 +19,6 @@ function DeletePubController(PubService, AuthService, $location, FlashService, $
     .getPubById($stateParams.id)
     .then(function(res) {
       vm.pub = res.pub;
-      console.log(vm.pub);
       vm.loaded = true;
     })
     .catch(function(error) {
@@ -27,11 +26,21 @@ function DeletePubController(PubService, AuthService, $location, FlashService, $
     });
   
   vm.confirmDelete = function() {
-    console.log("YEAH DELETE IT BABY");
+    PubService.deletePub(vm.pub.id)
+      .then(function(res) {
+        var message = "<p>The pub was deleted!</p>";
+        FlashService.createSuccessFlash(message);
+      
+        $location.url("/pubs");
+      })
+      .catch(function(error) {
+        FlashService.createErrorFlash(error);
+      });
   }
   
   vm.cancelDelete = function() {
     console.log("Hell no");
+    $location.url("/pubs");
   }
     
   

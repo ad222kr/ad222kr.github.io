@@ -12,7 +12,6 @@ EditPubController.$inject = [
 ];
 
 function EditPubController(PubService, AuthService, TagService, $location, FlashService, $stateParams) {
-  FlashService.clear();
   var vm = this;
   vm.loaded = false;
   PubService

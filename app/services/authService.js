@@ -82,7 +82,6 @@ angular
        * @returns {boolean}
        */
       isAuthenticated: function() {
-        console.log("isAuthenticated() called, returned: " + store.getcurrentUser());
         return store.getcurrentUser() !== null;
       },
 

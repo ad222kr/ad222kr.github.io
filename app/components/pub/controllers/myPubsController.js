@@ -1,3 +1,7 @@
+/************************************
+ * THIS CONTROLLER IS NOT IN USE ****
+ ************************************/
+
 angular
   .module("pub-map")
   .controller("MyPubsController", MyPubsController);
@@ -26,7 +30,6 @@ angular
     PubService
       .getPubsByEmail(email)
       .then(function(res) {
-        console.log(res);
         vm.pubs = res.pubs;
         vm.loaded = true;
       })

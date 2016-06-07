@@ -31,27 +31,21 @@ function ListPubsController(PubService, FlashService,
 
   vm.filterByTags = function(pub) {
     var showPub = pub.tags.some(function(tag) {
-      console.log(vm.filter[tag.id]);
       return vm.filter[tag.id];
     });
 
     return showPub || noFilter(vm.filter);
-
-    
-    //return vm.filter[pub.tag.id] || noFilter(vm.filter);
   }
 
   function noFilter(filterObj) {
     for (var key in filterObj) {
-        if (filterObj[key]) {
-            // There is at least one checkbox checked
-            return false;
-        }
+      if (filterObj[key]) {
+        return false;
+      }
     }
 
-    // No checkbox was found to be checked
     return true;
-}
+  }
 
   
   function showAllPubs() {
@@ -87,7 +81,6 @@ function ListPubsController(PubService, FlashService,
         vm.tags.forEach(function(tag) {
           tag.selected = true;
         });
-        console.log(vm.tags);
         vm.loaded = true;
       })
   }

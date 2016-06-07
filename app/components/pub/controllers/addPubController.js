@@ -7,7 +7,8 @@ AddPubController.$inject = [
   "AuthService", 
   "TagService", 
   "$location", 
-  "FlashService"
+  "FlashService",
+  "$rootScope"
 ];
 
 function AddPubController(PubService, AuthService, TagService, $location, FlashService, $rootScope) {
@@ -17,13 +18,10 @@ function AddPubController(PubService, AuthService, TagService, $location, FlashS
     .then(function(response) {
       FlashService.clear();
       vm.tags = response.tags;
-      console.log(vm.tags);
     })
     .catch(function(error) {
-      FlashService.clear();
       var message = "<p>Something went wrong when getting the tags...</p>";
       var flashId = Flash.create("danger", message, 0, {class: "custom-class"}, true);
-      console.log(error);
     })
   
   vm.create = function() {
